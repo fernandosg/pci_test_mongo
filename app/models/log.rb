@@ -8,7 +8,6 @@ class Log
       return nil
     end
     data_encode = redis.get("encode_data_#{token_decode[:id]}")
-    puts("el encode #{data_encode}")
     data_decode = JsonWebToken.decode(data_encode)
     return data_decode
   end
