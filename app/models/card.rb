@@ -17,8 +17,6 @@ class Card
 
   def get_data
     self.last_digits = self.number_card.to_s.last(4).to_i
-    puts("#{self.number_card.to_s.last(4).to_i} #{self.number_card}")
-    puts("los últimos dígitos #{self.last_digits}")
   end
 
   def tokenize

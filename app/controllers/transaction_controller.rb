@@ -1,7 +1,13 @@
 class TransactionController < ApplicationController
   def execute
     info = Payment.new
-    render json: {"success":info.process_pay(params_transaction[:token])}
+    result = info.process_pay(params_transaction[:token])
+    if result == false
+      status = :bad_request
+    else
+      status = 200
+    end
+    render json: {"success":info.process_pay(params_transaction[:token])}, :status=>status
   end
 
   private
