@@ -1,10 +1,9 @@
 class LogController < ApplicationController
 
   def log
-    puts card_params
     card = Card.create card_params
     if card.errors.size > 0
-      render json:{"success"=>false, "errors"=>card.errors.as_json}
+      render json:{"success"=>false, "errors"=>card.errors.as_json}, :status => :bad_request
     else
       render json:{"success"=>true, "token"=>card.tokenize}
     end
